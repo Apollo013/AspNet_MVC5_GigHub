@@ -18,9 +18,7 @@ Developed with Visual Studio 2015 Community
 |MVC|
 |Web Api|
 |AutoMapper|
-|jQuery|
-|Ajax|
-|Javascript|
+|jQuery / Javascript / Ajax|
 |CSS / Less|
 |Bootstrap / DatePicker / Cards / Popovers / Badges|
 |BootBox|
