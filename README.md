@@ -32,5 +32,5 @@ Developed with Visual Studio 2015 Community
 |BootBox|
 |Photoshop|
 |Moment.js|
-|_Underscore.js|
-
+|Underscore.js|
+|Azure|
