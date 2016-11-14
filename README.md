@@ -2,7 +2,7 @@
 
 ---
 
-A small MVC app that allows users to advertise upcoming gigs, follow artists & mark gigs in their calendar, and more ...
+A small MVC app that allows users to advertise upcoming gigs, follow artists & mark gigs in their calendar, search gigs, artists or genres, and more ...
 
 ---
 
