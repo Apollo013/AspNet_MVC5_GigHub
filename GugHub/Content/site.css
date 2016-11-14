@@ -267,20 +267,22 @@ span.field-validation-error {
 .card-columns p.card-text {
   margin: 0 !important;
 }
-.btn-purple {
-  background-color: blueviolet;
+.card {
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid #999;
 }
-.card-button-block {
+.card .card-button-block {
   padding: 0 5px;
 }
-.card-button-block .btn {
+.card .card-button-block .btn {
   background-color: transparent;
   color: #888;
   font-size: 12px;
 }
-.card-button-block .btn:hover,
-.card-button-block .btn-going,
-.card-button-block .btn-follow {
+.card .card-button-block .btn:hover,
+.card .card-button-block .btn-going,
+.card .card-button-block .btn-follow {
   color: #4aa3e2 !important;
 }
 /* SEARCH BOX */

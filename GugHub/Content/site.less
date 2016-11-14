@@ -322,30 +322,32 @@ span.field-validation-error {
 	column-count: 5;
 	-moz-column-count: 5;
 	position: relative;
-
-    
+	
 	p.card-text{
 		margin: 0 !important;
 	}
 }
 
-.btn-purple {
-	background-color: blueviolet;
+.card {
+    color: #fff;
+	background-color: transparent;
+    border: 1px solid #999;
+
+	.card-button-block{
+		padding:0 5px;
+
+		.btn{
+			background-color: transparent;
+			color: #888;
+			font-size: 12px;
+		}
+
+		.btn:hover, .btn-going, .btn-follow {
+			color:#4aa3e2 !important;
+		}
+	}
 }
 
-.card-button-block{
-	padding:0 5px;
-
-	.btn{
-		background-color: transparent;
-		color: #888;
-		font-size: 12px;
-	}
-
-	.btn:hover, .btn-going, .btn-follow {
-		color:#4aa3e2 !important;
-	}
-}
 
 /* SEARCH BOX */
 form.search-form {
