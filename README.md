@@ -10,8 +10,12 @@ Developed with Visual Studio 2015 Community
 
 ---
 
+[HOSTED ON AZURE](http://apollo013gighub.azurewebsites.net/)
+
+
 ![Alt text](https://github.com/Apollo013/GigHub/blob/master/GugHub/Images/GigHubMain.jpg?raw=true "Title")
 
+---
 
 ###Techs
 |Tech|
