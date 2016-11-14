@@ -19,6 +19,8 @@ Developed with Visual Studio 2015 Community
 |C#|
 |MVC|
 |Web Api|
+|Entity Framework|
+|MS SQL Server|
 |AutoMapper|
 |jQuery / Javascript / Ajax|
 |CSS / Less|
