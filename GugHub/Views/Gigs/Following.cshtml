@@ -1,0 +1,41 @@
+﻿@model GugHub.Models.Followers.FollowersViewModel
+@{
+    ViewBag.Title = Model.Heading;
+}
+
+<div class="card-columns cards-custom">
+    @foreach (var follower in Model.Followers)
+    {
+        <div class="card">
+            <img class="card-img-top img-fluid" src="@follower.ImageName" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">@follower.Name</h4>
+            </div>
+            <div class="card-block card-button-block">
+                <button data-user-id="@follower.Id" class="btn btn-sm pull-right js-toggle-following">Unfollow</button>
+            </div>            
+        </div>
+    }
+</div>
+
+@section scripts{
+ 
+    <script>
+
+        $(document).ready(function () {
+
+            $(".js-toggle-following").on("click", function (e) {
+                var btn = $(e.target);
+                $.post("/api/followings/unfollow", { followerid: btn.attr("data-user-id") })
+                .done(function () {
+                    btn.closest(".card").remove();
+                })
+                .fail(function (error) {
+                    console.log(error);
+                });
+            });
+        });
+    </script>   
+}
+
+

@@ -1,0 +1,74 @@
+﻿@model GugHub.Models.Gigs.GigsViewModel
+@{
+    ViewBag.Title = Model.Heading;
+}
+
+<div class="card-columns cards-custom">
+    @foreach (var gig in Model.UpcomingGigs)
+    {
+        <div class="card">
+            <img class="card-img-top img-fluid" src="@gig.Artist.ImageName" alt="Card image cap">
+            <div class="card-block">
+                <h4 class="card-title">@gig.Artist.Name</h4>
+                <p class="card-text">@gig.Venue</p>
+                <p id="@gig.Id" class="card-text"><small class="text-muted">@gig.DateTime</small></p>
+            </div>
+            @if (Model.ShowActions && !gig.IsCanceled)
+            {
+                <div class="card-block card-button-block">
+                    <button data-gig-id="@gig.Id" class="btn btn-sm pull-right js-toggle-attendance">Going ?</button>
+                    <button data-user-id="@gig.ArtistId" class="btn btn-sm pull-left js-toggle-following">Follow ?</button>
+                </div>
+            }            
+        </div>
+    }
+</div>
+
+
+@section scripts{
+
+    <script>
+
+        $(document).ready(function () {
+
+            // Attending toggle
+            $(".js-toggle-attendance").on("click", function (e) {
+                var btn = $(e.target);
+                $.post("/api/attendances", { gigId: btn.attr("data-gig-id") })
+                .done(function () {
+                    btn.addClass("btn-going")
+                       .text("Attending");
+                })
+                .fail(function (error) {
+                    var msg = JSON.parse(error.responseText);
+                    alert(msg.Message);
+                })
+            });
+
+
+            // Following Toggle
+            $(".js-toggle-following").on("click", function (e) {
+                var btn = $(e.target);
+                $.post("/api/followings/follow", { followerId: btn.attr("data-user-id") })
+                .done(function () {
+                    btn.addClass("btn-follow")
+                    .text("Following");
+                })
+                .fail(function (error) {
+                    var msg = JSON.parse(error.responseText);
+                    alert(msg.Message);
+                });
+            });
+
+            // Format the date
+            $(".text-muted").each(function () {
+                var datesPart = $(this).text().split(' ');
+                var dates = datesPart[0].split('/');
+                var date = dates[2] + "-" + dates[1] + "-" + dates[0];
+                var formatted = moment(date).format("dddd, MMMM Do YYYY");
+                $(this).text(formatted);
+            });
+        });
+
+    </script>
+}
