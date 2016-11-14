@@ -10,6 +10,8 @@ Developed with Visual Studio 2015 Community
 
 ---
 
+![Alt text](https://github.com/Apollo013/GigHub/blob/master/GugHub/Images/GigHubMain.jpg?raw=true "Title")
+
 
 ###Techs
 |Tech|
