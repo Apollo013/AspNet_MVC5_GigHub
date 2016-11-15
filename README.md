@@ -29,7 +29,7 @@ Developed with Visual Studio 2015 Community
 |jQuery / Javascript / Ajax|
 |CSS / Less|
 |[BootStrap](http://getbootstrap.com/) / [DatePicker](https://bootstrap-datepicker.readthedocs.io/en/latest/) / [Cards](https://v4-alpha.getbootstrap.com/components/card/) / [Popovers](https://v4-alpha.getbootstrap.com/components/popovers/) / [Badges](http://getbootstrap.com/components/#badges)|
-|[BootBoxJs](http://bootboxjs.com/)|
+|[BootBox.js](http://bootboxjs.com/)|
 |Photoshop|
 |[Moment.js](http://momentjs.com/)|
 |[Underscore.js](http://underscorejs.org/)|
