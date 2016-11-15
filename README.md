@@ -28,9 +28,10 @@ Developed with Visual Studio 2015 Community
 |AutoMapper|
 |jQuery / Javascript / Ajax|
 |CSS / Less|
-|Bootstrap / DatePicker / Cards / Popovers / Badges|
-|BootBox|
+|[BootStrap](http://getbootstrap.com/) / [DatePicker](https://bootstrap-datepicker.readthedocs.io/en/latest/) / [Cards](https://v4-alpha.getbootstrap.com/components/card/) / [Popovers](https://v4-alpha.getbootstrap.com/components/popovers/) / [Badges](http://getbootstrap.com/components/#badges)|
+|[BootBox.js](http://bootboxjs.com/)|
 |Photoshop|
-|Moment.js|
-|Underscore.js|
+|[Moment.js](http://momentjs.com/)|
+|[Underscore.js](http://underscorejs.org/)|
 |Azure|
+
