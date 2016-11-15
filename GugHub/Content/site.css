@@ -121,6 +121,9 @@ body,
   border: none;
   padding: 0;
 }
+.popover-custom {
+  border: solid 1px #999;
+}
 .popover-custom .popover-title {
   background-color: #00abec;
   color: white;
@@ -161,8 +164,12 @@ body,
   cursor: pointer;
 }
 .popover-user-login {
-  padding-right: 30px;
-  left: -15px;
+  border: solid 1px #999;
+  left: -120px !important;
+  width: 200px !important;
+}
+.popover-user-login div.arrow {
+  left: 72% !important;
 }
 .popover-user-login ul > li {
   padding-top: 10px;
@@ -194,17 +201,29 @@ span.field-validation-error {
 .gigslist {
   list-style: none;
 }
-.gigslist > li {
+.gigslist > div {
   position: relative;
-  margin-bottom: 30px;
+  display: inline-block;
+  float: left;
+  padding: 20px;
+  min-width: 310px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px 10px 10px 10px;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.1), inset 0 2px rgba(255, 255, 255, 0.2), inset 0 5px 5px rgba(255, 255, 255, 0.2), inset 0 0px 2px rgba(255, 255, 255, 0.2);
+  -o-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.1), inset 0 2px rgba(255, 255, 255, 0.2), inset 0 5px 5px rgba(255, 255, 255, 0.2), inset 0 0px 2px rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.1), inset 0 2px rgba(255, 255, 255, 0.2), inset 0 5px 5px rgba(255, 255, 255, 0.2), inset 0 0px 2px rgba(255, 255, 255, 0.2);
+  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.1), inset 0 2px rgba(255, 255, 255, 0.2), inset 0 5px 5px rgba(255, 255, 255, 0.2), inset 0 0px 2px rgba(255, 255, 255, 0.2);
 }
-.gigslist > li .date {
+.gigslist > div .date {
   color: #ffffff;
   text-align: center;
   width: 60px;
   border-radius: 8px;
+  float: left;
 }
-.gigslist > li .date .month {
+.gigslist > div .date .month {
   background: red;
   text-transform: uppercase;
   font-size: 14px;
@@ -213,7 +232,7 @@ span.field-validation-error {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
-.gigslist > li .date .day {
+.gigslist > div .date .day {
   background: #f7f7f7;
   color: #333333;
   font-size: 20px;
@@ -221,34 +240,41 @@ span.field-validation-error {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-.gigslist > li .details {
+.gigslist > div .details {
   position: absolute;
-  top: 0;
-  left: 70px;
-  width: 150px;
+  top: 20px;
+  left: 90px;
+  width: 210px;
 }
-.gigslist > li .details .artist {
+.gigslist > div .details .artist {
   font-weight: bold;
   display: block;
 }
-.gigslist > li .buttons {
+.gigslist > div .buttons {
   position: absolute;
   top: 0;
   left: 250px;
 }
-.gigslist > li .buttons .btn {
+.gigslist > div .buttons .btn {
   min-width: 100px;
   margin-bottom: 10px;
 }
-.gigslist > li .buttons .attending {
+.gigslist > div .buttons .attending {
   display: block;
 }
-.gigslist > li .actions {
-  font-size: 15px;
-  display: none;
+.gigslist > div .actions {
+  background: yellow;
 }
-.gigslist > li:hover .actions {
-  display: block;
+.gigslist > div .actions > a {
+  font-size: 13px;
+  color: #999;
+  text-decoration: none;
+  float: right;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.gigslist > div .actions > a:hover {
+  color: white;
 }
 .followlist {
   list-style: none;

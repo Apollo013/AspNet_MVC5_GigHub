@@ -5,10 +5,10 @@
 }
 
 <br />
-<ul class="gigslist">
+<div class="gigslist container-fluid">
     @foreach (var gig in Model)
     {
-        <li>
+        <div class="col-xs-1 col-sm-1 col-md-3 col-lg-3">
             <div class="date">
                 <div class="month">
                     @gig.DateTime.ToString("MMM")
@@ -25,57 +25,89 @@
                     @gig.Genre.Name
                 </span>
                 <div class="actions">
-                    <a href="@Url.Action("Edit","Gigs", new { id = gig.Id})" >Edit</a>
+                    <a href="#" class="js-cancel-gig" data-gig-id="@gig.Id">Cancel</a>
+                    <a href="@Url.Action("Edit","Gigs", new { id = gig.Id})">Edit</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<!--
+
+<ul class="gigslist">
+    @foreach (var gig in Model)
+    {
+        <li class="col-md-4">
+            <div class="date">
+                <div class="month">
+                    @gig.DateTime.ToString("MMM")
+                </div>
+                <div class="day">
+                    @gig.DateTime.ToString("d ")
+                </div>
+            </div>
+            <div class="details">
+                <span class="artist">
+                    @gig.Venue
+                </span>
+                <span class="genre">
+                    @gig.Genre.Name
+                </span>
+                <div class="actions">
+                    <a href="@Url.Action("Edit","Gigs", new { id = gig.Id})">Edit</a>
                     <a href="#" class="js-cancel-gig" data-gig-id="@gig.Id">Cancel</a>
                 </div>
-            </div> 
+            </div>
         </li>
     }
 </ul>
 
+-->
+
 
 @section scripts
 {
-    <script src="~/Scripts/bootbox.min.js"></script>
+<script src="~/Scripts/bootbox.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
+<script>
+    $(document).ready(function () {
 
-            $(".js-cancel-gig").on("click", function (e) {
-                e.preventDefault();
-                var link = $(e.target);
+        $(".js-cancel-gig").on("click", function (e) {
+            e.preventDefault();
+            var link = $(e.target);
 
-                bootbox.confirm({
-                    title: "Cancel Gig?",
-                    message: "Do you want to cancel this gig? This cannot be undone.",
-                    buttons: {
-                        cancel: {
-                            label: '<i class="fa fa-times"></i> No'
-                        },
-                        confirm: {
-                            label: '<i class="fa fa-check"></i> Yes',
-                            className: "btn-danger"
-                        }
+            bootbox.confirm({
+                title: "Cancel Gig?",
+                message: "Do you want to cancel this gig? This cannot be undone.",
+                buttons: {
+                    cancel: {
+                        label: '<i class="fa fa-times"></i> No'
                     },
-                    callback: function (result) {
-                        if (result == true) {
-                            $.ajax({
-                                url: "/api/gigapi/" + link.attr("data-gig-id"),
-                                method: "DELETE"
-                            })
-                            .done(function () {
-                                link.parents("li").fadeOut(function () {
-                                    $(this).remove();
-                                });
-
-                            })
-                            .fail(function (error) {
-                                console.log(error);
-                            });
-                        }
+                    confirm: {
+                        label: '<i class="fa fa-check"></i> Yes',
+                        className: "btn-danger"
                     }
-                });
+                },
+                callback: function (result) {
+                    if (result == true) {
+                        $.ajax({
+                            url: "/api/gigapi/" + link.attr("data-gig-id"),
+                            method: "DELETE"
+                        })
+                        .done(function () {
+                            link.parents("li").fadeOut(function () {
+                                $(this).remove();
+                            });
+
+                        })
+                        .fail(function (error) {
+                            console.log(error);
+                        });
+                    }
+                }
             });
         });
-    </script>
+    });
+</script>
 }

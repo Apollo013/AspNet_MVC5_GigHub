@@ -145,7 +145,8 @@ body,
 }
 
 .popover-custom {
-	
+	border: solid 1px #999;
+
 	.popover-title {
 		background-color: rgba(0,171,236,1); 
 		color: white;
@@ -194,8 +195,13 @@ body,
 }
 
 .popover-user-login {
-	padding-right: 30px;
-	left: -15px;
+    border: solid 1px #999;
+    
+    left: -120px !important;
+    width: 200px !important;
+    div.arrow{
+        left: 72% !important;
+    }
 
 	ul > li {
 		padding-top: 10px;
@@ -233,16 +239,27 @@ span.field-validation-error {
 .gigslist {
 	list-style: none;
 
-	> li {
-		position: relative;
-		margin-bottom: 30px;
+    > div { 
+        position: relative;
+        display: inline-block;
+        float: left;
+        padding: 20px;
+        min-width: 310px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(0,0,0,0.5);
+        border-radius: 10px 10px 10px 10px;
+        background: rgba(0,0,0,0.25);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.1), inset 0 2px rgba(255,255,255,0.2), inset 0 5px 5px rgba(255,255,255,0.2), inset 0 0px 2px rgba(255,255,255,0.2);
+        -o-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.1), inset 0 2px rgba(255,255,255,0.2), inset 0 5px 5px rgba(255,255,255,0.2), inset 0 0px 2px rgba(255,255,255,0.2);
+        -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.1), inset 0 2px rgba(255,255,255,0.2), inset 0 5px 5px rgba(255,255,255,0.2), inset 0 0px 2px rgba(255,255,255,0.2);
+        -moz-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.1), inset 0 2px rgba(255,255,255,0.2), inset 0 5px 5px rgba(255,255,255,0.2), inset 0 0px 2px rgba(255,255,255,0.2);
 
-		.date {
+        .date {
 			color: #ffffff;
 			text-align: center;
 			width: 60px;
 			border-radius: 8px;
-
+            float: left;
 			.month {
 				background: red;
 				text-transform: uppercase;
@@ -261,13 +278,13 @@ span.field-validation-error {
 				border-bottom-left-radius: 8px;
 				border-bottom-right-radius: 8px;
 			}
-		}
+        }
 
-		.details {
+        .details {
 			position: absolute;
-			top: 0;
-			left: 70px;
-			width: 150px;
+			top: 20px;
+			left: 90px;
+			width: 210px;
 
 			.artist {
 				font-weight: bold;
@@ -291,14 +308,23 @@ span.field-validation-error {
 		}
 
 		.actions {
-			font-size: 15px;
-			display: none;
-		}
-	}
+            
+            background: yellow;
 
-	> li:hover .actions {
-		display: block;
-	}
+            > a {
+			    font-size: 13px;
+                color: #999;
+                text-decoration: none;
+                float: right;
+                padding-left: 5px;
+                padding-right: 5px;
+		    }
+
+            >a:hover {
+                color: white;
+            }
+		}                
+    }   
 }
 
 
