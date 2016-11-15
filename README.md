@@ -2,7 +2,7 @@
 
 ---
 
-A small MVC app that allows users to advertise upcoming gigs, follow artists & mark gigs in their calendar, and more ...
+A small MVC app that allows users to advertise upcoming gigs, follow artists & mark gigs in their calendar, search gigs, artists or genres, and more ...
 
 ---
 
@@ -10,6 +10,12 @@ Developed with Visual Studio 2015 Community
 
 ---
 
+[HOSTED ON AZURE](http://apollo013gighub.azurewebsites.net/)
+
+
+![Alt text](https://github.com/Apollo013/GigHub/blob/master/GugHub/Images/GigHubMain.jpg?raw=true "Title")
+
+---
 
 ###Techs
 |Tech|
@@ -17,6 +23,8 @@ Developed with Visual Studio 2015 Community
 |C#|
 |MVC|
 |Web Api|
+|Entity Framework|
+|MS SQL Server|
 |AutoMapper|
 |jQuery / Javascript / Ajax|
 |CSS / Less|
@@ -24,5 +32,5 @@ Developed with Visual Studio 2015 Community
 |BootBox|
 |Photoshop|
 |Moment.js|
-|_Underscore.js|
-
+|Underscore.js|
+|Azure|
