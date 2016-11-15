@@ -35,7 +35,6 @@ C:\Apps\Published\GigHub\GugHub\bin\Microsoft.Owin.Security.Google.dll
 C:\Apps\Published\GigHub\GugHub\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
 C:\Apps\Published\GigHub\GugHub\bin\Microsoft.Owin.Security.OAuth.dll
 C:\Apps\Published\GigHub\GugHub\bin\Microsoft.Owin.Security.Twitter.dll
-C:\Apps\Published\GigHub\GugHub\bin\Microsoft.Practices.ServiceLocation.dll
 C:\Apps\Published\GigHub\GugHub\bin\Microsoft.Web.Infrastructure.dll
 C:\Apps\Published\GigHub\GugHub\bin\Newtonsoft.Json.dll
 C:\Apps\Published\GigHub\GugHub\bin\Owin.dll
@@ -53,8 +52,6 @@ C:\Apps\Published\GigHub\GugHub\bin\WebActivatorEx.dll
 C:\Apps\Published\GigHub\GugHub\bin\WebGrease.dll
 C:\Apps\Published\GigHub\GugHub\bin\Antlr3.Runtime.pdb
 C:\Apps\Published\GigHub\GugHub\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Apps\Published\GigHub\GugHub\bin\Microsoft.Practices.ServiceLocation.pdb
-C:\Apps\Published\GigHub\GugHub\bin\Microsoft.Practices.ServiceLocation.xml
 C:\Apps\Published\GigHub\GugHub\bin\Newtonsoft.Json.xml
 C:\Apps\Published\GigHub\GugHub\bin\System.Net.Http.Formatting.xml
 C:\Apps\Published\GigHub\GugHub\bin\System.Web.Http.xml

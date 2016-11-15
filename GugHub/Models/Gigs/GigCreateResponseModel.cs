@@ -22,7 +22,7 @@ namespace GugHub.Models.Gigs
 
         [Required]
         [FutureDate]
-        public string Date { get; set; } = DateTime.Now.ToShortDateString();
+        public string Date { get; set; } = DateTime.Now.ToString("dd/MM/yyyy");
 
         [Required]
         [ValidTime]

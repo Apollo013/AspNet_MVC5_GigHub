@@ -22,19 +22,18 @@ namespace GugHub
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/tether.js",
-                      "~/Scripts/bootstrap.js",
+                      "~/Scripts/tether.min.js",
+                      "~/Scripts/bootstrap.min.js",
                       "~/Scripts/moment.js",
                       "~/Scripts/bootstrap-datepicker.min.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/tether.min.css",
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.min.css",
                       "~/Content/bootstrap-flex.min.css",
-                      "~/Content/animate.css",
-                      "~/Content/jquery.jscrollpane.css",
                       "~/Content/bootstrap-datepicker.min.css",
+                      "~/Content/jquery.jscrollpane.css",
                       "~/Content/site.css"));
         }
     }

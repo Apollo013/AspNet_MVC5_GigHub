@@ -1,0 +1,47 @@
+﻿@model GugHub.Models.Gigs.GigCreateResponseModel
+@{
+    ViewBag.Title = Model.Heading;
+}
+
+@using (Html.BeginForm(Model.Action, "Gigs", FormMethod.Post))
+{
+    <p class="alert alert-info">All fields are <strong>required</strong></p>
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Venue)
+        @Html.TextBoxFor(m => m.Venue, new { @class = "form-control", autofocus = "autofocus" })
+        @Html.ValidationMessageFor(m => m.Venue, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Date)
+        @Html.TextBoxFor(m => m.Date, new { @class = "form-control js-datecontrol" })
+        @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger", placeholder = "eg 21/06/2016" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Time)
+        @Html.TextBoxFor(m => m.Time, new { @class = "form-control js-timecontrol" })
+        @Html.ValidationMessageFor(m => m.Time, "", new { @class = "text-danger", placeholder = "eg 20:00" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Genre)
+        @Html.DropDownListFor(m => m.Genre, new SelectList(Model.Genres, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Genre, "", new { @class = "text-danger" })
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-danger" id="cancel" onclick="window.history.back()">Cancel</button>
+}
+
+
+@section scripts 
+{
+    @Scripts.Render("~/bundles/jqueryval");
+
+    <script>
+        (function ($) {
+            $('.js-datecontrol').datepicker({ format: "dd/mm/yyyy" });
+        })(jQuery);
+    </script>
+}

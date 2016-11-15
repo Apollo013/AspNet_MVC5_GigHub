@@ -30,6 +30,11 @@ namespace GugHub.Controllers.Api
             return BadRequest("Already Following this artist");
         }
 
+        /// <summary>
+        /// Allows the user to unfollow an artist
+        /// </summary>
+        /// <param name="following"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("unfollow")]
         public IHttpActionResult Unfollow(FollowingDto following)
@@ -43,7 +48,7 @@ namespace GugHub.Controllers.Api
                 DB.SaveChanges();
                 return Ok();
             }
-            return BadRequest("You are not following this artist");
+            return BadRequest("You were not following this artist");
         }
     }
 }

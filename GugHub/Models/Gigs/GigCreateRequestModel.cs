@@ -21,6 +21,12 @@ namespace GugHub.Models.Gigs
         [Required]
         public byte Genre { get; set; }
 
-        public DateTime GetDateTime() { return DateTime.Parse($"{Date} {Time}"); }
+        public DateTime GetDateTime()
+        {
+            DateTime d = DateTime.Now;
+            if (DateTime.TryParse($"{Date} {Time}", out d))
+            { }
+            return d;
+        }
     }
 }

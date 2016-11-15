@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="~/Images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="~/Images/favicon-16x16.png" sizes="16x16">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/Home/Index">
+                <img alt="Brand" src="~/Images/gb.png" height="60">
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            @Html.Partial("_LoginPartial")
+        </div>
+        <div class="title-navbar">
+            <p class="title pull-left">@ViewBag.Title</p>
+        </div>
+    </div>
+    
+    <div class="body-content container-fluid scroll-pane" >
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+        <p>&copy; @DateTime.Now.Year - Paul J. Millar</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <!-- Underscore template for notifications -->
+    <!-- NotificationType => 1 = Canceled, 2 = Updated, 3 = Created -->
+    <script type="text/x-template" id="notification-template">
+        <ul class="notifications-list">
+            <%
+            _.each(notifications, function(notification){
+
+            var date = moment(notification.gig.dateTime).format("D MMM YYYY HH:mm");
+
+            <!-- Canceled -->
+            if(notification.type == 1) {
+            %>
+            <li><div class="item"><span class="highlight"><%= notification.gig.artist.name %></span> has canceled the gig in <%= notification.gig.venue %> at <%= date %></div></li>
+            <% }
+
+            <!-- Updated -->
+            else if(notification.type == 2) {
+
+            var venueChanged = (notification.originalVenue != notification.gig.venue);
+            var dateChanged = (notification.originalDateTime != notification.gig.dateTime);
+            var notificationText = "";
+
+            <!-- Venue & Date Changed -->
+            if(venueChanged && dateChanged){
+            notificationText =  "has changed the venue and date to " + notification.gig.venue + " on " + date;
+            }
+            <!-- Venue Only Changed -->
+            else if(venueChanged && !dateChanged){
+            notificationText =  "has changed the venue to " + notification.gig.venue + " on " + date;
+
+            }
+            <!-- Date Only Changed -->
+            else {
+            notificationText =  "has changed the date to " + date + " in " + notification.gig.venue;
+            }
+            %>
+            <li><div class="item"><span class="highlight"><%= notification.gig.artist.name %></span> <%= notificationText %></div></li>
+            <%
+            }
+            <!-- Created -->
+            else {
+            %>
+            <li><div class="item"><span class="highlight"><%= notification.gig.artist.name %></span> is appearing in the <%= notification.gig.venue %> on <%= date %></div></li>
+            <% }
+            })
+            %>
+        </ul>
+    </script>
+
+    <script type="text/x-template" id="userlogin-template">
+        <ul class="user-management">
+            <li><div class="item"><a href="@Url.Action("Attending","Gigs")">Gigs I'm going to</a></div></li>
+            <li><div class="item"><a href="@Url.Action("Following","Gigs")">Artists I'm Following</a></div></li>
+            <li><div class="item"><a href="@Url.Action("MyUpcomingGigs","Gigs")">My Gigs</a></div></li>
+            <li><div class="item"><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></div></li>
+        </ul>
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+
+            // Display new notifications count
+            $.getJSON("/api/notification", function (notifications) {
+
+                $(".js-notifications-count")
+                    .text(notifications.length)
+                    .removeClass("hide")
+                    .addClass("animated bounceInDown");
+
+                if (notifications.length == 0) return;
+
+                // Display actual notifications
+                $(".notifications").popover({
+                    html: true,
+                    title: "Notifications",
+                    content: function () {
+                        var compiled = _.template($("#notification-template").html());
+                        return compiled({ notifications: notifications });
+                    },
+                    placement: "bottom",
+                    trigger: "focus",
+                    template: '<div class="popover popover-notifications popover-custom" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+                }).on("shown.bs.popover", function () {
+                    $.post("/api/notification")
+                    .done(function () {
+                        $(".js-notifications-count").text("0").addClass("hide")
+                    })
+                    .fail(function (error) {
+                        console.log(error);
+                    });
+                });
+            });           
+
+            // User Menu
+            $(".js-user-login").popover({
+
+                html: true,
+                title: "Manage",
+                content: function () {
+                    var compiled = _.template($("#userlogin-template").html());
+                    return compiled();
+                },
+                placement: "bottom",
+                viewport: { 'selector': '.navbar-nav', 'padding': 100 },
+                trigger: "focus",
+                template: '<div class="popover popover-user-login popover-custom" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+            });
+
+            var win = $(window);
+            // Full body scroll
+            var isResizing = false;
+            win.bind(
+                'resize',
+                function () {
+                    if (!isResizing) {
+                        isResizing = true;
+                        var container = $('#full-page-container');
+                        // Temporarily make the container tiny so it doesn't influence the
+                        // calculation of the size of the document
+                        container.css(
+                            {
+                                'width': 1,
+                                'height': 1
+                            }
+                        );
+                        // Now make it the size of the window...
+                        container.css(
+                            {
+                                'width': win.width(),
+                                'height': win.height()
+                            }
+                        );
+                        isResizing = false;
+                        container.jScrollPane(
+                            {
+                                'showArrows': true
+                            }
+                        );
+                    }
+                }
+            ).trigger('resize');
+
+            // Workaround for known Opera issue which breaks demo (see
+            // http://jscrollpane.kelvinluck.com/known_issues.html#opera-scrollbar )
+            $('body').css('overflow', 'hidden');
+
+            // IE calculates the width incorrectly first time round (it
+            // doesn't count the space used by the native scrollbar) so
+            // we re-trigger if necessary.
+            if ($('#full-page-container').width() != win.width()) {
+                win.trigger('resize');
+            }
+
+            // Internal scrollpanes
+            $('.scroll-pane').jScrollPane({ showArrows: true });
+
+        });
+    </script>
+</body>
+
+</html>
