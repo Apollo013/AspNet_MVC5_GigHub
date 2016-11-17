@@ -34,6 +34,31 @@ body {
 .footer p {
   margin: 0;
 }
+/* LOGIN BOX*/
+.mainbox .panel-info > .panel-heading {
+  color: #fff;
+  background: #4aa3e2;
+}
+.mainbox .panel-info > .panel-heading a {
+  color: #fff;
+  text-decoration: none;
+}
+.mainbox label {
+  color: #000;
+}
+.mainbox .form-control {
+  height: 40px;
+  font-size: 14px;
+}
+#loginbox #loginform > div.input-group .input-group-addon {
+  padding: .5rem 1.25rem;
+}
+#loginbox #loginform > div.input-group .input-group-addon .glyphicon {
+  left: -7px;
+}
+#signupbox label {
+  font-size: 14px;
+}
 /* CARDS */
 .card-columns {
   color: #000;
@@ -180,11 +205,6 @@ body,
 }
 .dropdown-menu {
   -webkit-box-shadow: none;
-  box-shadow: none;
-}
-input.form-control:focus {
-  border-color: #f6f2f2;
-  background-color: #f6f2f2;
   box-shadow: none;
 }
 span.field-validation-error {
